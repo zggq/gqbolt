@@ -29,7 +29,7 @@ export function McpTools() {
     try {
       await checkServersAvailabilities();
     } catch (e) {
-      setError(`Failed to check server availability: ${e instanceof Error ? e.message : String(e)}`);
+      setError(`检查服务可用性失败：${e instanceof Error ? e.message : String(e)}`);
     } finally {
       setIsCheckingServers(false);
     }
@@ -50,7 +50,7 @@ export function McpTools() {
       <div className="flex">
         <IconButton
           onClick={() => setIsDialogOpen(!isDialogOpen)}
-          title="MCP Tools Available"
+          title="MCP 工具"
           disabled={!isInitialized}
           className="transition-all disabled:opacity-50 disabled:cursor-not-allowed"
         >
@@ -68,7 +68,7 @@ export function McpTools() {
             <div className="space-y-4 max-h-[80vh] overflow-y-auto pr-2">
               <DialogTitle>
                 <div className="i-bolt:mcp text-xl"></div>
-                MCP tools
+                MCP 工具
               </DialogTitle>
 
               <div className="space-y-4">
@@ -91,7 +91,7 @@ export function McpTools() {
                       ) : (
                         <div className="i-ph:arrow-counter-clockwise w-3 h-3" />
                       )}
-                      Check availability
+                      检查可用性
                     </button>
                   </div>
                   {serverEntries.length > 0 ? (
@@ -104,8 +104,8 @@ export function McpTools() {
                     />
                   ) : (
                     <div className="py-4 text-center text-bolt-elements-textSecondary">
-                      <p>No MCP servers configured</p>
-                      <p className="text-xs mt-1">Configure servers in Settings → MCP Servers</p>
+                      <p>未配置 MCP 服务器</p>
+                      <p className="text-xs mt-1">请在 设置 → MCP 服务器 中进行配置</p>
                     </div>
                   )}
                 </div>
@@ -116,7 +116,7 @@ export function McpTools() {
               <div className="flex justify-end gap-2 mt-6">
                 <div className="flex gap-2">
                   <DialogClose asChild>
-                    <DialogButton type="secondary">Close</DialogButton>
+                    <DialogButton type="secondary">关闭</DialogButton>
                   </DialogClose>
                 </div>
               </div>

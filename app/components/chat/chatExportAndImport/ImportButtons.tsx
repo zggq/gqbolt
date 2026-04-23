@@ -31,29 +31,29 @@ export function ImportButtons(importChat: ((description: string, messages: Messa
 
                   // Standard format
                   if (Array.isArray(data.messages)) {
-                    await importChat(data.description || 'Imported Chat', data.messages);
-                    toast.success('Chat imported successfully');
+                    await importChat(data.description || '已导入对话', data.messages);
+                    toast.success('对话导入成功');
 
                     return;
                   }
 
-                  toast.error('Invalid chat file format');
+                  toast.error('对话文件格式无效');
                 } catch (error: unknown) {
                   if (error instanceof Error) {
-                    toast.error('Failed to parse chat file: ' + error.message);
+                    toast.error('解析对话文件失败: ' + error.message);
                   } else {
-                    toast.error('Failed to parse chat file');
+                    toast.error('解析对话文件失败');
                   }
                 }
               };
-              reader.onerror = () => toast.error('Failed to read chat file');
+              reader.onerror = () => toast.error('读取对话文件失败');
               reader.readAsText(file);
             } catch (error) {
-              toast.error(error instanceof Error ? error.message : 'Failed to import chat');
+              toast.error(error instanceof Error ? error.message : '导入对话失败');
             }
             e.target.value = ''; // Reset file input
           } else {
-            toast.error('Something went wrong');
+            toast.error('出现错误，请重试');
           }
         }}
       />
@@ -76,7 +76,7 @@ export function ImportButtons(importChat: ((description: string, messages: Messa
             )}
           >
             <span className="i-ph:upload-simple w-4 h-4" />
-            Import Chat
+            导入对话
           </Button>
           <ImportFolderButton
             importChat={importChat}

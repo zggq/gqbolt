@@ -64,14 +64,14 @@ export const ColorSchemeDialog: React.FC<ColorSchemeDialogProps> = ({ setDesignS
       <div className="flex justify-between items-center">
         <h3 className="text-lg font-semibold text-bolt-elements-textPrimary flex items-center gap-2">
           <div className="w-2 h-2 rounded-full bg-bolt-elements-item-contentAccent"></div>
-          Color Palette
+          配色方案
         </h3>
         <button
           onClick={handleReset}
           className="text-sm bg-transparent hover:bg-bolt-elements-bg-depth-2 text-bolt-elements-textSecondary hover:text-bolt-elements-textPrimary rounded-lg flex items-center gap-2 transition-all duration-200"
         >
           <span className="i-ph:arrow-clockwise text-sm" />
-          Reset
+          重置
         </button>
       </div>
 
@@ -88,7 +88,7 @@ export const ColorSchemeDialog: React.FC<ColorSchemeDialogProps> = ({ setDesignS
                 onClick={() => document.getElementById(`color-input-${role.key}`)?.click()}
                 role="button"
                 tabIndex={0}
-                aria-label={`Change ${role.label} color`}
+                aria-label={`修改${role.label}颜色`}
               />
               <input
                 id={`color-input-${role.key}`}
@@ -121,7 +121,7 @@ export const ColorSchemeDialog: React.FC<ColorSchemeDialogProps> = ({ setDesignS
     <div className="space-y-4">
       <h3 className="text-lg font-semibold text-bolt-elements-textPrimary flex items-center gap-2">
         <div className="w-2 h-2 rounded-full bg-bolt-elements-item-contentAccent"></div>
-        Typography
+        字体排版
       </h3>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 max-h-80 overflow-y-auto pr-2 custom-scrollbar">
@@ -168,7 +168,7 @@ export const ColorSchemeDialog: React.FC<ColorSchemeDialogProps> = ({ setDesignS
     <div className="space-y-4">
       <h3 className="text-lg font-semibold text-bolt-elements-textPrimary flex items-center gap-2">
         <div className="w-2 h-2 rounded-full bg-bolt-elements-item-contentAccent"></div>
-        Design Features
+        设计特性
       </h3>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-h-80 overflow-y-auto pr-2 custom-scrollbar">
@@ -272,7 +272,7 @@ export const ColorSchemeDialog: React.FC<ColorSchemeDialogProps> = ({ setDesignS
 
   return (
     <div>
-      <IconButton title="Design Palette" className="transition-all" onClick={() => setIsDialogOpen(!isDialogOpen)}>
+      <IconButton title="设计面板" className="transition-all" onClick={() => setIsDialogOpen(!isDialogOpen)}>
         <div className="i-ph:palette text-xl"></div>
       </IconButton>
 
@@ -281,20 +281,19 @@ export const ColorSchemeDialog: React.FC<ColorSchemeDialogProps> = ({ setDesignS
           <div className="py-4 px-4 min-w-[480px] max-w-[90vw] max-h-[85vh] flex flex-col gap-6 overflow-hidden">
             <div className="">
               <DialogTitle className="text-2xl font-bold text-bolt-elements-textPrimary">
-                Design Palette & Features
+                设计面板与特性
               </DialogTitle>
               <DialogDescription className="text-bolt-elements-textSecondary leading-relaxed">
-                Customize your color palette, typography, and design features. These preferences will guide the AI in
-                creating designs that match your style.
+                自定义你的配色、字体和设计特性，这些偏好会引导 AI 生成更符合你风格的界面。
               </DialogDescription>
             </div>
 
             {/* Navigation Tabs */}
             <div className="flex gap-1 p-1 bg-bolt-elements-bg-depth-3 rounded-xl">
               {[
-                { key: 'colors', label: 'Colors', icon: 'i-ph:palette' },
-                { key: 'typography', label: 'Typography', icon: 'i-ph:text-aa' },
-                { key: 'features', label: 'Features', icon: 'i-ph:magic-wand' },
+                { key: 'colors', label: '颜色', icon: 'i-ph:palette' },
+                { key: 'typography', label: '字体', icon: 'i-ph:text-aa' },
+                { key: 'features', label: '特性', icon: 'i-ph:magic-wand' },
               ].map((tab) => (
                 <button
                   key={tab.key}
@@ -321,18 +320,18 @@ export const ColorSchemeDialog: React.FC<ColorSchemeDialogProps> = ({ setDesignS
             {/* Action Buttons */}
             <div className="flex justify-between items-center">
               <div className="text-sm text-bolt-elements-textSecondary">
-                {Object.keys(palette).length} colors • {font.length} fonts • {features.length} features
+                {Object.keys(palette).length} 种颜色 • {font.length} 种字体 • {features.length} 个特性
               </div>
               <div className="flex gap-3">
                 <Button variant="secondary" onClick={() => setIsDialogOpen(false)}>
-                  Cancel
+                  取消
                 </Button>
                 <Button
                   variant="ghost"
                   onClick={handleSave}
                   className="bg-bolt-elements-button-primary-background hover:bg-bolt-elements-button-primary-backgroundHover text-bolt-elements-button-primary-text"
                 >
-                  Save Changes
+                  保存修改
                 </Button>
               </div>
             </div>

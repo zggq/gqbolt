@@ -244,7 +244,7 @@ export const CodeBlock = memo(
             <>
               <button
                 className="flex items-center bg-accent-500 p-[6px] justify-center rounded-md transition-theme mr-1"
-                title="Run Code"
+                title="运行代码"
                 onClick={() => runCode()}
               >
                 <div className={classNames(running ? 'i-svg-spinners:90-ring-with-bg' : 'i-ph:play-duotone')} />
@@ -257,7 +257,7 @@ export const CodeBlock = memo(
                     'before:opacity-100': copied,
                   },
                 )}
-                title="Copy Code"
+                title="复制代码"
                 onClick={() => copyToClipboard()}
               >
                 <div className="i-ph:clipboard-text-duotone" />

@@ -22,14 +22,14 @@ interface WebSearchResponse {
 }
 
 function formatSearchResult(data: WebSearchData): string {
-  const parts: string[] = [`[Web content from ${data.sourceUrl}]`];
+  const parts: string[] = [`[网页内容来源：${data.sourceUrl}]`];
 
   if (data.title) {
-    parts.push(`Title: ${data.title}`);
+    parts.push(`标题：${data.title}`);
   }
 
   if (data.description) {
-    parts.push(`Description: ${data.description}`);
+    parts.push(`描述：${data.description}`);
   }
 
   parts.push('', data.content);
@@ -85,15 +85,15 @@ export function WebSearch({ onSearchResult, disabled = false }: WebSearchProps) 
       const result = (await response.json()) as WebSearchResponse;
 
       if (!response.ok || !result.success || !result.data) {
-        throw new Error(result.error || 'Failed to fetch URL content');
+        throw new Error(result.error || '获取网页内容失败');
       }
 
       onSearchResult(formatSearchResult(result.data));
-      toast.success('URL content fetched');
+      toast.success('网页内容获取成功');
       setUrl('');
       setIsOpen(false);
     } catch (error) {
-      toast.error(error instanceof Error ? error.message : 'Failed to fetch URL');
+      toast.error(error instanceof Error ? error.message : '获取网页内容失败');
     } finally {
       setIsSearching(false);
     }
@@ -102,7 +102,7 @@ export function WebSearch({ onSearchResult, disabled = false }: WebSearchProps) 
   return (
     <div ref={containerRef} className="relative">
       <IconButton
-        title="Fetch URL content"
+        title="抓取网页内容"
         disabled={disabled || isSearching}
         onClick={() => setIsOpen(!isOpen)}
         className="transition-all"
@@ -134,7 +134,7 @@ export function WebSearch({ onSearchResult, disabled = false }: WebSearchProps) 
                 setIsOpen(false);
               }
             }}
-            placeholder="https://example.com"
+            placeholder="请输入网址，例如：https://example.com"
             disabled={isSearching}
             className={classNames(
               'w-[300px] px-3 py-1.5 text-sm rounded-md',
@@ -154,7 +154,7 @@ export function WebSearch({ onSearchResult, disabled = false }: WebSearchProps) 
               'disabled:opacity-50 disabled:cursor-not-allowed',
             )}
           >
-            {isSearching ? 'Fetching...' : 'Fetch'}
+            {isSearching ? '抓取中...' : '抓取'}
           </button>
         </div>
       )}
